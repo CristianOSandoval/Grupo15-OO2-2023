@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SmartCity - Iniciar sesión</title>
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Cambria&display=swap');
+
+body {
+	font-family: 'Cambria', sans-serif;
+	background: linear-gradient(to bottom right, blue, gray);
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	font-family: Arial, sans-serif;
+}
+
+.login-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 400px;
+}
+
+.login-box {
+	text-align: center;
+	background: #fff;
+	padding: 30px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	margin-bottom: 20px;
+}
+
+h1 {
+	color: blue;
+	font-size: 24px;
+	margin-bottom: 30px;
+}
+
+input[type="text"], input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	background: blue;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+button:hover {
+	background: darkblue;
+}
+
+.register-button {
+	background: gray;
+	margin-left: 10px;
+}
+
+.register-button:hover {
+	background: darkgray;
+}
+
+footer {
+	font-size: 12px;
+	text-align: center;
+	padding: 10px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	margin-top: auto;
+}
+</style>
+<meta charset="UTF-8">
+</head>
+
+<body>
+	<div class="login-container">
+		<div class="login-box">
+			<h1>SmartCity</h1>
+			<form th:action="@{/login}" method="post">
+  				<input type="text" placeholder="Usuario" required th:field="*{username}">
+  				<input type="password" placeholder="Contraseña" required th:field="*{password}">
+				<div th:if="${error}" class="error-message">
+					<p th:text="${error}"></p>
+				</div>
+				<div>
+					<button type="submit">Entrar</button>
+					<button class="register-button" type="button">Registrarse</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<footer>
+		<p>Grupo 15 O2 - Cristian Sandoval, Ignacio Maria</p>
+	</footer>
+</body>
+
+</html>
