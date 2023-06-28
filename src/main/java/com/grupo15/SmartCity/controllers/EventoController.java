@@ -5,8 +5,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.grupo15.SmartCity.helpers.ViewRouteHelper;
 import com.grupo15.SmartCity.services.IEventoService;
@@ -19,10 +22,34 @@ public class EventoController {
 	@Qualifier("eventoService")
 	private IEventoService eventoService;
 	
-	@GetMapping("/registrar-evento")
-	public ModelAndView registrarEvento() {
-		ModelAndView mAV = new ModelAndView("registrarEvento");
+	@GetMapping("/registrar-humedad")
+	public ModelAndView registrarHumedad() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REGISTRAREVENTOHUMEDAD);
 		return mAV;
+	}
+	
+	@GetMapping("/registrar-luz")
+	public ModelAndView registrarLuz() {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.REGISTRAREVENTOLUZ);
+		return mAV;
+	}
+	
+	@GetMapping("/registrar-evento-humedad")
+	public RedirectView registrarEventoHumedad(@RequestParam(value = "lluvia") String lluvia, 
+												@RequestParam(value = "porcentajeHumedad") String porcHumedad, 
+												@RequestParam(value = "dispositivo") String dispositivo) {
+		RedirectView rV = new RedirectView(ViewRouteHelper.REDIRECTLISTADOEVENTOS);
+		eventoService.registrarEventoSensorHumedad(lluvia, porcHumedad, dispositivo);
+		return rV;
+	}
+	
+	@GetMapping("/registrar-evento-luz")
+	public RedirectView registrarEventoLuz(@RequestParam(value = "aulaOcupada") String aulaOcupada, 
+												@RequestParam(value = "cortinasAbiertas") String cortinasAbiertas, 
+												@RequestParam(value = "dispositivo") String dispositivo) {
+		RedirectView rV = new RedirectView(ViewRouteHelper.REDIRECTLISTADOEVENTOS);
+		eventoService.registrarEventoSensorLuz(aulaOcupada, cortinasAbiertas, dispositivo);
+		return rV;
 	}
 	
 	@GetMapping("/listado-eventos")
@@ -32,10 +59,10 @@ public class EventoController {
 		return mAV;
 	}
 	
-	@GetMapping("/listado-eventos/{id}")
+	@PostMapping("/listado-eventos/{id}")
 	public ModelAndView listadoEventosPorId(@PathVariable int id) {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LISTADOEVENTOS);
-		mAV.addObject("eventosLista", eventoService.getAllById(id));
+		mAV.addObject("eventosLista", eventoService.getAllByDispositivoId(id));
 		return mAV;
 	}
 }

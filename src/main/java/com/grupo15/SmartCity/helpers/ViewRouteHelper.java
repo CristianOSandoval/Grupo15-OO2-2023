@@ -13,9 +13,12 @@ public class ViewRouteHelper {
 	
 	//Evento
 	public final static String LISTADOEVENTOS = "/ListadoEventos";
+	public final static String REGISTRAREVENTOHUMEDAD = "/RegistrarEventoSensorHumedad";
+	public final static String REGISTRAREVENTOLUZ = "/RegistrarEventoSensorLuz";
 	
 	//Usuario
 	
 	//Redirects
 	public final static String REDIRECTLISTADODISPOSITIVOS = "/dispositivos/listado-dispositivos";
+	public final static String REDIRECTLISTADOEVENTOS = "/eventos/listado-eventos";
 }

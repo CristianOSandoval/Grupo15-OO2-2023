@@ -11,5 +11,5 @@ import com.grupo15.SmartCity.entities.Evento;
 @Repository("eventoRepository")
 public interface IEventoRepository extends JpaRepository<Evento, Serializable>{
 	
-	public abstract List<Evento> findAllById(int id);
+	public abstract List<Evento> findAllByDispositivoId(int id);
 }

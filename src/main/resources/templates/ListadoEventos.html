@@ -165,6 +165,9 @@
       <div class="menu">
         <div class="menu-title">Menú - Tipo Usuario</div>
         <br>
+        <div class="menu-item"><a href="/eventos/registrar-humedad">Registrar evento Sensor Humedad</a></div>
+        <div class="menu-item"><a href="/eventos/registrar-luz">Registrar evento Sensor Luz</a></div>
+        <br>
         <div class="menu-item"><a href="#">Cerrar Sesión</a></div>
       </div>
     </div>
@@ -175,14 +178,14 @@
           <tr>
             <th>Evento</th>
             <th>dispositivo</th>
-            <th>Fecha</th>
+            <th>Descripcion</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each="evento : ${eventosLista}">
             <td><span th:text="${evento.descripcion}"/></td>
             <td><span th:text="${evento.dispositivo.getNombre}"/></td>
-            <!--<td><span th:text="${evento.fecha}"/></td>-->
+            <td><span th:text="${evento.dispositivo.getDescripcion}"/></td>
           </tr>
         </tbody>
       </table>

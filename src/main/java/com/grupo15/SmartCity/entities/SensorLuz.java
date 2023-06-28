@@ -14,15 +14,5 @@ import lombok.Setter;
 @PrimaryKeyJoinColumn(referencedColumnName = "id")
 public class SensorLuz extends Dispositivo {
 	
-	private boolean iluminado;
-	private boolean aulaEnUso;
-	private boolean cortinasAbiertas;
-	
-	public SensorLuz(String nombre, boolean activo, boolean iluminado, boolean aulaEnUso, boolean cortinasAbiertas) {
-		super(nombre, activo);
-		this.iluminado = iluminado;
-		this.aulaEnUso = aulaEnUso;
-		this.cortinasAbiertas = cortinasAbiertas;
-	}
 	
 }

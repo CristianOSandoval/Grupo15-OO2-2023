@@ -35,9 +35,6 @@ public class Evento {
 	@JoinColumn(name = "iddispositivo")
 	private Dispositivo dispositivo;
 	
-	@Column(name = "fechaHora")
-	private LocalDateTime fechaHora;
-	
 	@Column(name="createdate")
 	@CreationTimestamp
 	private LocalDateTime createdAt;
@@ -46,11 +43,10 @@ public class Evento {
 	@UpdateTimestamp
 	private LocalDateTime updatedAt;
 	
-	public Evento(String descripcion, Dispositivo dispositivo, LocalDateTime fechaHora) {
+	public Evento(String descripcion, Dispositivo dispositivo) {
 		super();
 		this.descripcion = descripcion;
 		this.dispositivo = dispositivo;
-		this.fechaHora = fechaHora;
 	}
 
 }
