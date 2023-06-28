@@ -9,4 +9,6 @@ public interface IEventoService {
 	public List<Evento> getAll();
 	
 	public boolean save();
+
+	List<Evento> getAllById(int id);
 }

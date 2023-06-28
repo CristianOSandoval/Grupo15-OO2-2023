@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.grupo15.SmartCity.helpers.ViewRouteHelper;
 import com.grupo15.SmartCity.services.IEventoService;
 
 @Controller
@@ -25,7 +27,15 @@ public class EventoController {
 	
 	@GetMapping("/listado-eventos")
 	public ModelAndView listadoEventos() {
-		ModelAndView mAV = new ModelAndView("listadoEventos");
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LISTADOEVENTOS);
+		mAV.addObject("eventosLista", eventoService.getAll());
+		return mAV;
+	}
+	
+	@GetMapping("/listado-eventos/{id}")
+	public ModelAndView listadoEventosPorId(@PathVariable int id) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.LISTADOEVENTOS);
+		mAV.addObject("eventosLista", eventoService.getAllById(id));
 		return mAV;
 	}
 }

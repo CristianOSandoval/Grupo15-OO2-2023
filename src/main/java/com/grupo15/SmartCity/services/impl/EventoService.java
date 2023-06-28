@@ -22,6 +22,12 @@ public class EventoService implements IEventoService{
 		// TODO Auto-generated method stub
 		return eventoRepository.findAll();
 	}
+	
+	@Override
+	public List<Evento> getAllById(int id) {
+		// TODO Auto-generated method stub
+		return eventoRepository.findAllById(id);
+	}
 
 	@Override
 	public boolean save() {

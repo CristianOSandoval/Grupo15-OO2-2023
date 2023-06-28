@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,31 +25,32 @@ import lombok.Setter;
 @Entity
 @Table(name = "dispositivo")
 @Getter @Setter @NoArgsConstructor
-public class Dispositivo {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Dispositivo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	protected int id;
 	
 	@Column(name = "nombre")
-	private String nombre;
+	protected String nombre;
 	
 	@Column(name = "descripcion")
-	private String descripcion;
+	protected String descripcion;
 	
 	@Column(name = "activo")
-	private boolean activo;
+	protected boolean activo;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="dispositivo")
-	private Set<Evento> degrees = new HashSet<>();
+	protected Set<Evento> eventos = new HashSet<>();
 	
 	@Column(name="createdate")
 	@CreationTimestamp
-	private LocalDateTime createdAt;
+	protected LocalDateTime createdAt;
 
 	@Column(name="updatedate")
 	@UpdateTimestamp
-	private LocalDateTime updatedAt;
+	protected LocalDateTime updatedAt;
 
 	public Dispositivo(String nombre, boolean activo) {
 		super();

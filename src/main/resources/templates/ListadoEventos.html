@@ -143,6 +143,18 @@
       color: white;
     }
     
+    .volver-button {
+      background: red;
+      color: #fff;
+      text-decoration: none;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    
   </style>
   <meta charset="UTF-8">
 </head>
@@ -153,11 +165,6 @@
       <div class="menu">
         <div class="menu-title">Menú - Tipo Usuario</div>
         <br>
-        <div class="menu-item"><a href="#">Alta de Dispositivo</a></div>
-        <div class="menu-item"><a href="#">Baja de Dispositivo</a></div>
-        <div class="menu-item"><a href="#">Funcion Dispositivo</a></div>
-        <div class="menu-item"><a href="#">Informes de Dispositivo</a></div>
-        <br>
         <div class="menu-item"><a href="#">Cerrar Sesión</a></div>
       </div>
     </div>
@@ -167,25 +174,21 @@
         <thead>
           <tr>
             <th>Evento</th>
+            <th>dispositivo</th>
             <th>Fecha</th>
-            <th>Descripción</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Ejemplo de un evento -->
-          <tr>
-            <td>Evento 1</td>
-            <td>2023-06-21</td>
-            <td>Descripción del Evento 1</td>
-          </tr>
-          <!-- Ejemplo de otro evento -->
-          <tr>
-            <td>Evento 2</td>
-            <td>2023-06-22</td>
-            <td>Descripción del Evento 2</td>      
+          <tr th:each="evento : ${eventosLista}">
+            <td><span th:text="${evento.descripcion}"/></td>
+            <td><span th:text="${evento.dispositivo.getNombre}"/></td>
+            <!--<td><span th:text="${evento.fecha}"/></td>-->
           </tr>
         </tbody>
       </table>
+      <div>
+	      <button class="volver-button" type="button" value="volver"><a class="volver-button" href="/dispositivos/listado-dispositivos">Volver</a></button>
+	   </div>
     </div>
   </div>
   <footer>
