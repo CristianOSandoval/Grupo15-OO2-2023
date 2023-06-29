@@ -1,5 +1,6 @@
 package com.grupo15.SmartCity.controllers;
 
+<<<<<<< Updated upstream
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,3 +31,34 @@ public class LoginController {
 		}
 	}
 }
+=======
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class LoginController {
+
+	private Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+	@GetMapping(value = "/login", produces = "text/html")
+	public String loginPage(@RequestParam(value = "error", required = false) String error,
+	        @RequestParam(value = "logout", required = false) String logout, Model model) {
+	    if (error != null) {
+	        model.addAttribute("error", true);
+	    }
+	    if (logout != null) {
+	        model.addAttribute("logout", true);
+	    }
+	    return "login";
+	}
+
+	@GetMapping("/home")
+	public String showHomePage() {
+		return "home";
+	}
+}
+>>>>>>> Stashed changes

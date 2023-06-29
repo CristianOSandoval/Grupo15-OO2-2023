@@ -1,0 +1,69 @@
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Cambria&display=swap');
+
+body {
+	font-family: 'Cambria', sans-serif;
+	background: linear-gradient(to bottom right, blue, gray);
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 100vh;
+	font-family: Arial, sans-serif;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.jumbotron {
+	text-align: center;
+	background: #fff;
+	padding: 30px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h1.display-5 {
+	color: blue;
+	font-size: 24px;
+	margin-bottom: 30px;
+}
+
+input[type="text"], input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+input[type="submit"] {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.alert.alert-danger {
+	background: red;
+	color: #fff;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+footer {
+	font-size: 12px;
+	text-align: center;
+	padding: 10px;
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	margin-top: 20px;
+}
